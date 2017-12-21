@@ -6,11 +6,36 @@ var initialize = require('./initialize.js');
 // require more modules/folders here!
 
 exports.handleRequest = function (req, res) {
+  var status = 200;
+  const {method, url, data} = req;
   req.on('data', (chunk) => {
     var incoming = chunk.toString();
-    console.log(incoming);
-    console.log(incoming.slice(4));
-    initialize(incoming.slice(4));
+    if (method === 'GET') {
+      archive.readListOfUrls(status);
+    } else if (method === 'POST') {
+      archive.addUrlToList(incoming.slice(4), status);
+    }
   });
-  helper.serveAssets(res, 'index.html');
+  helper.serveAssets(res, 'index.html', status);
 };
+
+/*
+function req, res
+
+get method
+pass data if necessary
+
+post
+archive.addUrlToList(incoming.slice(4), status);
+
+get
+archive.readListOfUrls(status);
+
+
+callback we send
+helper.serveAssets(res, somethingElse, status);
+
+
+else {
+helper.serveAssets(res, 'index.html', status);
+*/
