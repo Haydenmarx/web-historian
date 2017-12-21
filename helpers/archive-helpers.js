@@ -26,40 +26,31 @@ exports.initialize = function(pathsObj) {
 // modularize your code. Keep it clean!
 
 exports.readListOfUrls = function(callback, status) {
-  fs.readFile(exports.paths.list, 'utf8', (err, data) => {
-    console.log(data);
+  fs.readFile(exports.paths.list, 'utf8', (err, data) => {    
+    // console.log(data);
+    //exports.isUrlInList
+    status = 200;
   });
-  // console.log(fs.readFile(exports.paths.list));
-  
-  
-  
-  // var list = paths.siteAssets.list;
-  // var sites = [www.google.com, www.yahoo.com, www.amazon.com];
-  // fs.readFile(archive.paths.siteAssets.list), 'utf8', (err, data) => {
-  //   if (err) {
-  //     console.log('err', err);
-  //   } else {
-  //     sites = data.split('\n');
-  //     console.log(sites);
-  //     sites.pop(); 
-  //   }
-  // };
-  // return sites;
-  return status = 200;
 };
 
 exports.isUrlInList = function(url, callback) {
+  //check the list
+  //if it is not downloadUrls
+  //else return website
 };
 
 exports.addUrlToList = function(url, callback, status) {
+  //helper function calls this on success
   url = url + ' \n';
   fs.appendFile(exports.paths.list, url, (err, data) => {
   });
-  return status = 302;
+  status = 302;
 };
 
 exports.isUrlArchived = function(url, callback) {
+  //webworkers uses this to check
 };
 
 exports.downloadUrls = function(urls) {
+  //calls helper function to download
 };

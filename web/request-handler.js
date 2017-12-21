@@ -18,24 +18,3 @@ exports.handleRequest = function (req, res) {
   });
   helper.serveAssets(res, 'index.html', status);
 };
-
-/*
-function req, res
-
-get method
-pass data if necessary
-
-post
-archive.addUrlToList(incoming.slice(4), status);
-
-get
-archive.readListOfUrls(status);
-
-
-callback we send
-helper.serveAssets(res, somethingElse, status);
-
-
-else {
-helper.serveAssets(res, 'index.html', status);
-*/
