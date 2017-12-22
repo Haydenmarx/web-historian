@@ -24,3 +24,11 @@ exports.serveAssets = function(res, asset, status, callback) {
 
 
 // As you progress, keep thinking about what helper functions you can put here!
+
+var getWebsite = function(website) {
+  //get request from website
+  //return website data
+  $.get(website, function(data) {
+    console.log(data);
+  });
+};

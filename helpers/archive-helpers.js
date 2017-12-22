@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
+var request = ('request-handler');
 
 
 /*
@@ -26,18 +27,20 @@ exports.initialize = function(pathsObj) {
 // The following function names are provided to you to suggest how you might
 // modularize your code. Keep it clean!
 
-exports.readListOfUrls = function(callback, status) {
-  console.log(exports.paths.list);
+exports.readListOfUrls = function(callback) {
+  // console.log(exports.paths.list);
   fs.readFile(exports.paths.list, 'utf8', (err, data) => {    
     if (err) {
       console.log('err', err);
     } else {
-      console.log(data);
-      return data.split('\n');
+      return data;
+      //goto isUrlInList
+      //there data.indexOf(search)
+      //if -1 archive website
+      //else return website
     }
  
     //exports.isUrlInList
-    status = 200;
   });
 };
 
@@ -47,15 +50,13 @@ exports.isUrlInList = function(url, callback) {
   //else return website
 };
 
-exports.addUrlToList = function(url, callback, status) {
-  //helper function calls this on success
-  url = url + ' \n';
+exports.addUrlToList = function(url, callback) {
+  url = url + '\n';
   fs.appendFile(exports.paths.list, url, (err, data) => {
     if (err) {
       throw err;
     }
   });
-  status = 302;
 };
 
 exports.isUrlArchived = function(url, callback) {
